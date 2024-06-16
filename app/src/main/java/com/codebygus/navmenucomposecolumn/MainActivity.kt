@@ -1,6 +1,8 @@
 package com.codebygus.navmenucomposecolumn
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
@@ -22,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,6 +46,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalAnimationGraphicsApi::class)
 @Composable
 fun NavMenuComposeColumn() {
+    val context = LocalContext.current
     val textColor = Color.Blue
     val imageExpand = AnimatedImageVector.animatedVectorResource(id = R.drawable.avd_expand)
     val imageChangeFolder = ImageVector.vectorResource(R.drawable.ic_change_folder)
@@ -57,6 +61,8 @@ fun NavMenuComposeColumn() {
     val imageTypesGenre = ImageVector.vectorResource(R.drawable.ic_list_genre)
     val imageTypesLabel = ImageVector.vectorResource(R.drawable.ic_list_label)
     val imageTypesStyle = ImageVector.vectorResource(R.drawable.ic_list_style)
+    val imageAssociatedArtists = ImageVector.vectorResource(R.drawable.ic_associated_artists)
+    val imageActivePlaylists = ImageVector.vectorResource(R.drawable.ic_active_playlists)
     var isExpandedCollection by remember { mutableStateOf(false) }
     var isExpandedData by remember { mutableStateOf(false) }
     var isExpandedSettings by remember { mutableStateOf(false) }
@@ -105,7 +111,9 @@ fun NavMenuComposeColumn() {
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = { }
+                onClick = {
+                    showToastMessage(context, "Invoke Change Music Folder Function")
+                }
             )
         }
         AnimatedVisibility(
@@ -121,11 +129,13 @@ fun NavMenuComposeColumn() {
                 textSize = 18,
                 textHeight = 50,
                 internalSpaces = "  ",
-                inputString = "Change Folder",
+                inputString = "Sync Collection",
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Sync Music Collection To Database Function")
+                }
             )
         }
         HorizontalDivider(
@@ -173,7 +183,9 @@ fun NavMenuComposeColumn() {
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Export Data Options Function")
+                }
             )
         }
         AnimatedVisibility(
@@ -193,7 +205,9 @@ fun NavMenuComposeColumn() {
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Import Data Options Function")
+                }
             )
         }
         AnimatedVisibility(
@@ -213,7 +227,9 @@ fun NavMenuComposeColumn() {
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Generate Data Options Function")
+                }
             )
         }
         HorizontalDivider(
@@ -261,7 +277,9 @@ fun NavMenuComposeColumn() {
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Appearance Settings Function")
+                }
             )
         }
         AnimatedVisibility(
@@ -281,7 +299,9 @@ fun NavMenuComposeColumn() {
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Function Settings Function")
+                }
             )
         }
         AnimatedVisibility(
@@ -301,7 +321,9 @@ fun NavMenuComposeColumn() {
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Playlist Settings Function")
+                }
             )
         }
         HorizontalDivider(
@@ -319,7 +341,7 @@ fun NavMenuComposeColumn() {
             textSize = 18,
             textHeight = 50,
             internalSpaces = "  ",
-            inputString = "Types",
+            inputString = "Playlist Types",
             inputStartPadding = 12,
             inputTextColor = textColor,
             inputDrawableColor = textColor,
@@ -345,11 +367,13 @@ fun NavMenuComposeColumn() {
                 textSize = 18,
                 textHeight = 50,
                 internalSpaces = "  ",
-                inputString = "Artist Types",
+                inputString = "Artist Playlists",
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Artist Playlist Function")
+                }
             )
         }
         AnimatedVisibility(
@@ -365,11 +389,13 @@ fun NavMenuComposeColumn() {
                 textSize = 18,
                 textHeight = 50,
                 internalSpaces = "  ",
-                inputString = "Genre Types",
+                inputString = "Genre Playlists",
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Genre Playlist Function")
+                }
             )
         }
         AnimatedVisibility(
@@ -385,11 +411,13 @@ fun NavMenuComposeColumn() {
                 textSize = 18,
                 textHeight = 50,
                 internalSpaces = "  ",
-                inputString = "Label Types",
+                inputString = "Label Playlists",
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Label Playlist Function")
+                }
             )
         }
         AnimatedVisibility(
@@ -405,11 +433,13 @@ fun NavMenuComposeColumn() {
                 textSize = 18,
                 textHeight = 50,
                 internalSpaces = "  ",
-                inputString = "Style Types",
+                inputString = "Style Playlists",
                 inputStartPadding = 12,
                 inputTextColor = textColor,
                 inputDrawableColor = textColor,
-                onClick = {}
+                onClick = {
+                    showToastMessage(context, "Invoke Style Playlist Function")
+                }
             )
         }
         HorizontalDivider(
@@ -418,7 +448,49 @@ fun NavMenuComposeColumn() {
             thickness = 1.dp,
             color = textColor
         )
+        LeftDrawableText(
+            layoutId = "txtAssociatedArtists",
+            inputDrawable = imageAssociatedArtists,
+            drawableWidth = 30,
+            drawableHeight = 30,
+            textSize = 18,
+            textHeight = 50,
+            internalSpaces = "  ",
+            inputString = "Associated Artists",
+            inputStartPadding = 12,
+            inputTextColor = textColor,
+            inputDrawableColor = textColor,
+            onClick = {
+                showToastMessage(context, "Invoke Associated Artists Function")
+            }
+        )
+        HorizontalDivider(
+            modifier = Modifier
+                .fillMaxWidth(),
+            thickness = 1.dp,
+            color = textColor
+        )
+        LeftDrawableText(
+            layoutId = "txtActivePlaylists",
+            inputDrawable = imageActivePlaylists,
+            drawableWidth = 30,
+            drawableHeight = 30,
+            textSize = 18,
+            textHeight = 50,
+            internalSpaces = "  ",
+            inputString = "Active Playlists",
+            inputStartPadding = 12,
+            inputTextColor = textColor,
+            inputDrawableColor = textColor,
+            onClick = {
+                showToastMessage(context, "Invoke Active Playlists Function")
+            }
+        )
     }
+}
+
+private fun showToastMessage(context: Context, userMessage: String) {
+    Toast.makeText(context, userMessage, Toast.LENGTH_LONG).show()
 }
 
 @Preview(showBackground = true)
